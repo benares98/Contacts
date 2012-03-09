@@ -11,33 +11,16 @@ public class ContactDAOImpl implements ContactDAO {
 
 	private HibernateTemplate hibernateTemplate;
 	
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
-	}
+	public void setSessionFactory(SessionFactory sessionFactory){this.hibernateTemplate = new HibernateTemplate(sessionFactory);}
 	
-	public void saveContact(Contact contact) {
-		// TODO Auto-generated method stub
+	public void saveContact(Contact contact) {hibernateTemplate.saveOrUpdate(contact);}
 
-	}
+	public Contact readContact(String name) {return (Contact) hibernateTemplate.get("Contact", name);}
 
-	public Contact readContact(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public void updateContact(Contact contact) {hibernateTemplate.update(contact);}
 
-	public void updateContact(Contact contact) {
-		// TODO Auto-generated method stub
+	public void deleteContact(Contact contact) {hibernateTemplate.delete(contact);}
 
-	}
-
-	public void deleteContact(Contact contact) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public List<String> listNames() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<String> listNames() {return hibernateTemplate.findByNamedParam("select name from contacts", "", null);}
 
 }
