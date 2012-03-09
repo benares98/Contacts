@@ -40,4 +40,6 @@
 	<bean name="/*.htm" class="benares98.contacts.web.ContactsController">
 		<property name="contactDAO" ref="contactDAO"/>
 	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 </beans>
