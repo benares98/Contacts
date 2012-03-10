@@ -57,6 +57,21 @@
     	<artifactId>hsqldb</artifactId>
     	<version>2.2.8</version>
     </dependency>
+    <dependency>
+    	<groupId>org.javassist</groupId>
+    	<artifactId>javassist</artifactId>
+    	<version>3.16.1-GA</version>
+    </dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>jstl</artifactId>
+    	<version>1.2</version>
+    </dependency>
+    <dependency>
+    	<groupId>taglibs</groupId>
+    	<artifactId>standard</artifactId>
+    	<version>1.1.2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Contacts</finalName>
