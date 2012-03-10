@@ -21,6 +21,6 @@ public class ContactDAOImpl implements ContactDAO {
 
 	public void deleteContact(Contact contact) {hibernateTemplate.delete(contact);}
 
-	public List<String> listNames() {return hibernateTemplate.find("from Contact order by NAME");}
+	public List<Contact> listNames() {return hibernateTemplate.find("from Contact order by NAME");}
 
 }

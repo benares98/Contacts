@@ -17,9 +17,7 @@ public class ContactsController extends MultiActionController {
 	
 	public ModelAndView add(HttpServletRequest request, HttpServletResponse response, Contact contact){
 		contactDAO.saveContact(contact);
-		ModelAndView modelAndView = list(request, response);
-		modelAndView.getModelMap().addAttribute("contact", contact);
-		return modelAndView;
+		return new ModelAndView("redirect:list.htm");
 	}
 	
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, Contact contact){
@@ -43,6 +41,7 @@ public class ContactsController extends MultiActionController {
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response){
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contactList", contactDAO.listNames());
+		modelMap.addAttribute("contact", new Contact());
 		return new ModelAndView("contactsForm", modelMap);
 	}
 }

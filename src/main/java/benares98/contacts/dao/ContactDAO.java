@@ -9,5 +9,5 @@ public interface ContactDAO {
 	public Contact readContact(String name);
 	public void updateContact(Contact contact);
 	public void deleteContact(Contact contact);
-	public List<String> listNames();
+	public List<Contact> listNames();
 }
