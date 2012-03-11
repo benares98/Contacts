@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form:form name="contactForm" action="add.htm" commandName="contact">
+<form:form id="meow" name="contactForm" action="add.htm" commandName="contact">
 	<table>
 		<tr>
 			<td>Name :</td>
@@ -52,6 +52,7 @@
 		</tr>
 	</table>
 </form:form>
+<form><input type="button" value="delete" onclick="deleteContact();"/>Delete</form>
 <c:if test="${fn:length(contactList) > 0}">
 	<table >
 		<tr class="even">
@@ -73,9 +74,12 @@
 </body>
 <script>
 	function redirectToEditContact() {  
-		 window.location = window.location.hostname + '/edit/' + this.options[this.selectedIndex].value;
+		 window.location = window.location.hostname + '/edit/' + this.options[this.selectedIndex].value + '.htm';
 		}  
 
+	function deleteContact(){
+		alert(window.location = window.location.hostname + '/delete.htm?delName='+ document.getElementById("meow").name.value);
+	}
 		// add event listener to contactList
 		var el = document.getElementById("formList");   
 		el.addEventListener("click", redirectToEditContact, false);
