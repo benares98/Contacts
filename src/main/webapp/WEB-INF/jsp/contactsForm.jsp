@@ -11,11 +11,12 @@
 	background-color: silver;
 }
 </style>
+	
 <title>Registration Page</title>
 </head>
 <body>
 
-<form:form action="add.htm" commandName="contact">
+<form:form name="contactForm" action="add.htm" commandName="contact">
 	<table>
 		<tr>
 			<td>Name :</td>
@@ -38,17 +39,19 @@
 		</tr>
 	</table>
 </form:form>
-<table>
-<tr><th>value</th>
-	<th>square</th></tr>
-<c:forEach var="x" begin="0" end="10" step="2">
-	<tr><td><c:out value="${x}"/></td>
-		<td><c:out value="${x * x}"/></td></tr>
-</c:forEach>
-</table>
-<c:out value="${2+2}"/>
-
-
+<form:form>
+	<table>
+		<tr>
+			<td valign="top" width=600>
+				<select id="formList">
+					<c:forEach items="${contactList}" var="contact" varStatus="status">
+						<option value="${contact.name}">${contact.name}</option>
+					</c:forEach>
+				</select>
+			</td>
+		</tr>
+	</table>
+</form:form>
 <c:if test="${fn:length(contactList) > 0}">
 	<table >
 		<tr class="even">
@@ -68,4 +71,14 @@
 	</table>
 </c:if>
 </body>
+<script>
+	function redirectToEditContact() {  
+		 window.location = window.location.hostname + '/edit/' + this.options[this.selectedIndex].value;
+		}  
+
+		// add event listener to contactList
+		var el = document.getElementById("formList");   
+		el.addEventListener("click", redirectToEditContact, false);
+
+	</script>
 </html>

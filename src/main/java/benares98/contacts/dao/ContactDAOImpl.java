@@ -15,7 +15,7 @@ public class ContactDAOImpl implements ContactDAO {
 	
 	public void saveContact(Contact contact) {hibernateTemplate.saveOrUpdate(contact);}
 
-	public Contact readContact(String name) {return (Contact) hibernateTemplate.get("Contact", name);}
+	public Contact readContact(String name) {return (Contact) hibernateTemplate.find("from Contact where name=", name).get(0);}
 
 	public void updateContact(Contact contact) {hibernateTemplate.update(contact);}
 
