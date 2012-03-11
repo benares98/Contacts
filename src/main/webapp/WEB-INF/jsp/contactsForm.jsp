@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>Address :</td>
-			<td><form:textarea path="address" /></td>
+			<td><form:input path="address" /></td>
 		</tr>
 		<tr>
 			<td>Phone :</td>

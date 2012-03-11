@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity
 @Table(name="CONTACT")
+@Proxy(lazy=false)
 public class Contact {
 	private String name, address, phone, email;
 

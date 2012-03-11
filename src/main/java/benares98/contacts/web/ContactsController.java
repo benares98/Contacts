@@ -33,7 +33,6 @@ public class ContactsController{
 	
 	@RequestMapping(value="**/delete.htm")
 	public ModelAndView delete(@RequestParam(value="delName", required=true) String id){
-		System.out.println(id);
 		contactDAO.deleteContact(contactDAO.readContact(id));
 		return new ModelAndView("redirect:lists.htm");
 	}
