@@ -6,83 +6,77 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-.even {
-	background-color: silver;
-}
-</style>
-	
+
+<link rel=stylesheet type="text/css" href="/Contacts/contacts.css">
+
 <title>Registration Page</title>
 </head>
 <body>
-
-<form:form id="meow" name="contactForm" action="add.htm" commandName="contact">
-	<table>
-		<tr>
-			<td>Name :</td>
-			<td><form:input path="name" /></td>
-		</tr>
-		<tr>
-			<td>Address :</td>
-			<td><form:input path="address" /></td>
-		</tr>
-		<tr>
-			<td>Phone :</td>
-			<td><form:input path="phone" /></td>
-		</tr>
-		<tr>
-			<td>Email :</td>
-			<td><form:input path="email" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit" value="Save Contact"></td>
-		</tr>
-	</table>
-</form:form>
-<form:form>
-	<table>
-		<tr>
-			<td valign="top" width=600>
-				<select id="formList">
-					<c:forEach items="${contactList}" var="contact" varStatus="status">
-						<option value="${contact.name}">${contact.name}</option>
-					</c:forEach>
-				</select>
-			</td>
-		</tr>
-	</table>
-</form:form>
-<form><input type="button" value="delete" onclick="deleteContact();"/>Delete</form>
-<c:if test="${fn:length(contactList) > 0}">
-	<table >
-		<tr class="even">
-			<th>Name</th>
-			<th>Address</th>
-			<th>Phone</th>
-			<th>Email</th>
-		</tr>
-		<c:forEach items="${contactList}" var="contact" varStatus="status">
-			<tr class="<c:if test="${status.count % 2 == 0}">even</c:if>">
-				<td>${contact.name}</td>
-				<td>${contact.address}</td>
-				<td>${contact.phone}</td>
-				<td>${contact.email}</td>
-			</tr>
-		</c:forEach>
-	</table>
-</c:if>
+	<div id="container">
+		<div id="row">
+			<div id="left">
+				<div class="column-in"></div>
+			</div>
+			<div id="middle">
+				<div class="column-in">
+					<p>Granny's Addressbook</p>
+					<div class="contactBox">
+						<form:form id="meow" name="contactForm" action="add.htm"
+							commandName="contact">
+							<table>
+								<tr>
+									<td>Name :</td>
+									<td><form:input path="name" /></td>
+								</tr>
+								<tr>
+									<td>Address :</td>
+									<td><form:input path="address" /></td>
+								</tr>
+								<tr>
+									<td>Phone :</td>
+									<td><form:input path="phone" /></td>
+								</tr>
+								<tr>
+									<td>Email :</td>
+									<td><form:input path="email" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="Save Contact"></td>
+								</tr>
+							</table>
+						</form:form>
+					</div>
+				</div>
+			</div>
+			<div id="right">
+				<div class="column-in">
+					<div class="contactList">
+						<form:form>
+							<table>
+								<tr>
+									<td ><select id="formList"
+										size="${fn:length(contactList)}">
+											<c:forEach items="${contactList}" var="contact"
+												varStatus="status">
+												<option value="${contact.name}">${contact.name}</option>
+											</c:forEach>
+									</select></td>
+								</tr>
+							</table>
+						</form:form>
+					</div>
+				</div>
+				<div class="column-in">
+					<div class="deleteBox">
+						<form>
+							<input type="button" value="delete" onclick="deleteContact();" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </body>
-<script>
-	function redirectToEditContact() {  
-		 window.location = window.location.hostname + '/edit/' + this.options[this.selectedIndex].value + '.htm';
-		}  
-
-	function deleteContact(){
-		alert(window.location = window.location.hostname + '/delete.htm?delName='+ document.getElementById("meow").name.value);
-	}
-		// add event listener to contactList
-		var el = document.getElementById("formList");   
-		el.addEventListener("click", redirectToEditContact, false);
-
-	</script>
+<script type="text/javascript" src="/Contacts/contacts.js"></script>
 </html>

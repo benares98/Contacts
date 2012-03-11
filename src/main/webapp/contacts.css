@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+.even {
+	background-color: silver;
+}
+body{
+	margin:0; padding:0;
+	font:.75em/1.5 sans-serif;
+}
+.column-in{
+	margin:0; padding:0.5em 1em;
+}
+#container{
+	width: 1000px;
+	padding:0;
+	display: table;
+	border: 1px solid black;
+}
+#row{
+	display: table-row;
+	
+}
+#left{
+	width:150px;
+	padding:0;
+	display:table-cell;
+}
+#middle {
+	width:280px;
+	padding:10;
+	display: table-cell;
+}
+#right{
+	width:150px;
+	background:#FEE;
+	display: table-cell;
+}
+
+* html #left{
+	float:left;
+}
+* html #right{
+	float:right;
+}
+* html #middle{
+	float:left;
+}
+.contactBox{
+	color: #00ff00;
+	font-family: arial;
+	font-size: 10pt;
+	
+}
+.contactList{
+	color: #00ff00;
+	font-family: arial;
+	font-size: 20pt;
+}
+.deleteBox{
+	color: #00ff00;
+	font-family: arial;
+	font-size: 20pt;
+}

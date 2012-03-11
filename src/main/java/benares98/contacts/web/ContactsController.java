@@ -45,7 +45,7 @@ public class ContactsController{
 		return modelAndView;
 	}*/
 	
-	@RequestMapping(value="**/edit/{contactName}.htm")
+	@RequestMapping(value="**/{contactName}.htm")
 	public ModelAndView readContact(@PathVariable("contactName") String contactName){
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contact", contactDAO.readContact(contactName));
