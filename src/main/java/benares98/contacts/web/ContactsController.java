@@ -23,7 +23,6 @@ public class ContactsController{
 	
 	@RequestMapping(value="**/add.htm")
 	public ModelAndView add(HttpServletRequest request, HttpServletResponse response, Contact contact){
-		System.out.println("shitc");
 		contactDAO.saveContact(contact);
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contactList", contactDAO.listNames());

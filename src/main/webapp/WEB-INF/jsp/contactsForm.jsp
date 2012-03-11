@@ -9,7 +9,7 @@
 
 <link rel=stylesheet type="text/css" href="/Contacts/contacts.css">
 
-<title>Registration Page</title>
+<title></title>
 </head>
 <body>
 	<div id="container">
@@ -55,7 +55,8 @@
 							<table>
 								<tr>
 									<td ><select id="formList"
-										size="${fn:length(contactList)}">
+										size="${fn:length(contactList) + 10}">
+											<option value="new">New Contact</option>
 											<c:forEach items="${contactList}" var="contact"
 												varStatus="status">
 												<option value="${contact.name}">${contact.name}</option>
@@ -67,10 +68,12 @@
 					</div>
 				</div>
 				<div class="column-in">
-					<div class="deleteBox">
-						<form>
-							<input type="button" value="delete" onclick="deleteContact();" />
-						</form>
+					<div class="deleteBox">			
+						<c:if test="${fn:length(contactList) > 0}">
+							<form>
+								<input type="button" value="delete" onclick="deleteContact();" />
+							</form>
+						</c:if>
 					</div>
 				</div>
 			</div>
