@@ -25,6 +25,7 @@
 							commandName="contact">
 							<table>
 								<tr>
+									<td><form:hidden path="id" /></td>
 									<td>Name :</td>
 									<td><form:input path="name" /></td>
 								</tr>
@@ -59,7 +60,7 @@
 											<option value="new">New Contact</option>
 											<c:forEach items="${contactList}" var="contact"
 												varStatus="status">
-												<option value="${contact.name}">${contact.name}</option>
+												<option value="${contact.id}">${contact.name}</option>
 											</c:forEach>
 									</select></td>
 								</tr>

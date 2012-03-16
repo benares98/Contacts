@@ -31,7 +31,7 @@ public class ContactsController{
 	}
 	
 	@RequestMapping(value="**/delete.htm")
-	public ModelAndView delete(@RequestParam(value="delName", required=true) String id){
+	public ModelAndView delete(@RequestParam(value="delName", required=true) Long id){
 		contactDAO.deleteContact(contactDAO.readContact(id));
 		return new ModelAndView("redirect:lists.htm");
 	}
@@ -45,16 +45,15 @@ public class ContactsController{
 	}*/
 	
 	@RequestMapping(value="**/{contactName}.htm")
-	public ModelAndView readContact(@PathVariable("contactName") String contactName){
+	public ModelAndView readContact(@PathVariable("contactName") Long id){
 		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("contact", contactDAO.readContact(contactName));
+		modelMap.addAttribute("contact", contactDAO.readContact(id));
 		modelMap.addAttribute("contactList", contactDAO.listNames());
 		return new ModelAndView("contactsForm", modelMap);
 	}
 	
 	@RequestMapping(value="**/lists.htm")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("sas");
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contactList", contactDAO.listNames());
 		modelMap.addAttribute("contact", new Contact());

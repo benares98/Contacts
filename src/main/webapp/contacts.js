@@ -6,7 +6,7 @@ function redirectToEditContact() {
 }  
 function deleteContact(){
 	if (location.pathname != "/Contacts/lists.htm")
-		window.location = 'delete.htm?delName='+ document.getElementById("meow").name.value;
+		window.location = 'delete.htm?delName='+ document.getElementById("meow").id.value;
 }
 
 var el = document.getElementById("formList");   
