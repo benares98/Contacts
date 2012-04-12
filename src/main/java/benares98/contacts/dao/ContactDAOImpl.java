@@ -13,12 +13,7 @@ public class ContactDAOImpl implements ContactDAO {
 	
 	public void setSessionFactory(SessionFactory sessionFactory){this.hibernateTemplate = new HibernateTemplate(sessionFactory);}
 	
-	public void saveContact(Contact contact) {
-		if (hibernateTemplate.contains(contact))
-			System.out.println("already exists");
-		else
-			System.out.println("doesn't exist");
-		hibernateTemplate.saveOrUpdate(contact);}
+	public void saveContact(Contact contact) {hibernateTemplate.saveOrUpdate(contact);}
 
 	public Contact readContact(Long name) {return hibernateTemplate.load(Contact.class, name);}
 

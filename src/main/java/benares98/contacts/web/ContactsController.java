@@ -21,7 +21,7 @@ public class ContactsController{
 
 	public void setContactDAO(ContactDAO contactDAO) {this.contactDAO = contactDAO;}
 	
-	@RequestMapping(value="**/add.htm")
+	@RequestMapping(value="/add.htm")
 	public ModelAndView add(HttpServletRequest request, HttpServletResponse response, Contact contact){
 		contactDAO.saveContact(contact);
 		ModelMap modelMap = new ModelMap();
@@ -30,7 +30,7 @@ public class ContactsController{
 		return new ModelAndView("contactsForm", modelMap);
 	}
 	
-	@RequestMapping(value="**/delete.htm")
+	@RequestMapping(value="/delete.htm")
 	public ModelAndView delete(@RequestParam(value="delName", required=true) Long id){
 		contactDAO.deleteContact(contactDAO.readContact(id));
 		return new ModelAndView("redirect:lists.htm");
@@ -44,15 +44,15 @@ public class ContactsController{
 		return modelAndView;
 	}*/
 	
-	@RequestMapping(value="**/{contactName}.htm")
-	public ModelAndView readContact(@PathVariable("contactName") Long id){
+	@RequestMapping(value="/{contactId}.htm")
+	public ModelAndView readContact(@PathVariable("contactId") Long id){
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contact", contactDAO.readContact(id));
 		modelMap.addAttribute("contactList", contactDAO.listNames());
 		return new ModelAndView("contactsForm", modelMap);
 	}
 	
-	@RequestMapping(value="**/lists.htm")
+	@RequestMapping(value="/lists.htm")
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response){
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("contactList", contactDAO.listNames());
